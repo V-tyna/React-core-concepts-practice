@@ -1,0 +1,26 @@
+.expense-container {
+	display: flex;
+	height: 100px;
+	width: 50rem;
+	border-radius: 10px;
+	background-color: #69826980;
+	align-items: center;
+	justify-content: space-around;
+	margin: 10px;
+	padding: 10px;
+}
+
+.expense-description {
+	color: #594545;
+}
+
+.expense-price {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #FFF8EA;
+	background-color: #B99B6B;
+	width: 70px;
+	height: 30px;
+	border-radius: 5px;
+}
