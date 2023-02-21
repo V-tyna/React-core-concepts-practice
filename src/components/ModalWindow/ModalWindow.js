@@ -5,15 +5,15 @@ import styles from './ModalWindow.module.css';
 
 function ModalWindow({ errorContent, onClose }) {
   const [status, setStatus] = useState(true);
+  console.log('Modal window opened.');
 
 	const closeWindowHandler = () => {
     onClose();
 		setStatus(false);
 	};
-	console.log('Modal window opened.');
    
 	return (
-		<div className={`${status ? styles['overlay'] : styles['display-none']}`}>
+		<div className={`${status ? styles['overlay'] : styles['display-none']}`} onClick={closeWindowHandler}>
 			<div className={`${status ? styles['modal-container'] : styles['display-none']}`}>
 				<div className={styles['invalid-header']}>
 					<h4>Invalid input</h4>

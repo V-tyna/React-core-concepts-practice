@@ -43,7 +43,7 @@ function UserForm({ onSetUserData, onError }) {
 			<input onChange={nameInputHandler} value={name} />
 			<label>Age (years): </label>
 			<input type='number' onChange={ageInputHandler} value={age} />
-      <Button textContent={'Add user'} onClickHandler={addUser}/>
+      <Button buttonType={'submit'} textContent={'Add user'} onClickHandler={addUser}/>
 		</form>
 	);
 }
