@@ -5,7 +5,7 @@ import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
 import './ExpenseItem.css';
 
-function ExpenseItem({ expenses: {date, title, price} }) {
+function ExpenseItem({ expense: {date, title, price} }) {
   const [changeableTitle, setChangeableTitle] = useState(title);
   const handleChangeTitle = (e) => {
     setChangeableTitle('Updated!');

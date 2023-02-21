@@ -2,7 +2,6 @@ import './ExpensesFilter.css';
 
 const ExpensesFilter = ({ onSelectYear, selectedYear }) => {
   const selectYearHandler = (e) => {
-    console.log('Select event Child component: ', e.target.value);
     onSelectYear(e.target.value);
   }
   return (

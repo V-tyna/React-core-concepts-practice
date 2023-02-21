@@ -1,0 +1,10 @@
+.expenses-list__fallback {
+  font-weight: 600;
+  color: #594545;
+  width: 50rem;
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+  padding: 10px;
+}
