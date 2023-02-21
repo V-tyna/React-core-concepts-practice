@@ -1,11 +1,10 @@
 import { useState } from 'react';
 import ExpensesChart from './ExpensesChart';
-// import ExpenseItem from './ExpenseItem';
 import ExpensesFilter from './ExpensesFilter';
 import ExpensesList from './ExpensesList';
 
 function Expenses({ expenses }) {
-	const [selectedYear, setSelectedYear] = useState('2020');
+	const [selectedYear, setSelectedYear] = useState('2021');
 
 	const selectYearHandler = (year) => {
 		setSelectedYear(year);

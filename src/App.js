@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Expenses from './components/Expenses/Expenses';
 import NewExpense from './components/NewExpense/NewExpense';
+import AppStyle from './components/StyleBlock/AppStyle';
 
 function App() {
 	const dummyExpenses = [
@@ -21,6 +22,7 @@ function App() {
       <header>
         <h1>Hello world</h1> 
       </header>
+      <AppStyle /> 
       <div className='body-container'>
         <NewExpense onAddExpense={addExpenseHandler} />
         <Expenses expenses={expenses} />
