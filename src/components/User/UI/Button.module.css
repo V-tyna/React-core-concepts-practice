@@ -1,0 +1,21 @@
+.button-area {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.btn {
+  width: 100px;
+  height: 35px;
+  font-size: 1rem;
+  background-color: #815B5B;
+  color: white;
+  border-radius: 12px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #698269;
+}

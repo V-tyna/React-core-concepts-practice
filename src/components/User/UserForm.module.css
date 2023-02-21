@@ -1,0 +1,31 @@
+.user-form-control {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 500px;
+  height: 200px;
+  background-color: #b99b6b44;
+  border-radius: 12px;
+  margin: 20px auto;
+  padding: 15px;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 30%);
+}
+
+.user-form-control input {
+  height: 35px;
+  border: 1px solid #815B5B;
+  border-radius: 12px;
+  margin: 10px;
+  outline: none;
+}
+
+.user-form-control input:focus {
+  background-color: #b99b6b52;
+}
+
+.user-form-control label {
+  color: #815B5B;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-left: 30px;
+}

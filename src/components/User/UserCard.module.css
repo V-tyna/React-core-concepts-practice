@@ -1,0 +1,15 @@
+.user-card {
+    display: flex;
+    height: 50px;
+    width: 50rem;
+    border-radius: 10px;
+    background-color: #69826980;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px;
+    padding: 10px;
+    margin: 20px auto;
+    color: #594545;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
