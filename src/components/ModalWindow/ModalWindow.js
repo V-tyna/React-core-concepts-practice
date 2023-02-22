@@ -1,34 +1,35 @@
 import { useState } from 'react';
-import Button from '../User/UI/Button';
-
-import styles from './ModalWindow.module.css';
+import ReactDOM from 'react-dom';
+import Backdrop from './Backdrop';
+import ModalOverlay from './ModalOverlay';
 
 function ModalWindow({ errorContent, onClose }) {
-  const [status, setStatus] = useState(true);
-  console.log('Modal window opened.');
+	const [status, setStatus] = useState(true);
+	console.log('Modal window opened.');
 
 	const closeWindowHandler = () => {
-    onClose();
+		onClose();
 		setStatus(false);
 	};
-   
+
 	return (
-		<div className={`${status ? styles['overlay'] : styles['display-none']}`} onClick={closeWindowHandler}>
-			<div className={`${status ? styles['modal-container'] : styles['display-none']}`}>
-				<div className={styles['invalid-header']}>
-					<h4>Invalid input</h4>
-				</div>
-				<div className={styles['error-container']}>
-					<div className={styles['text-container']}>
-						<p>{errorContent}</p>
-					</div>
-					<Button
-						textContent={'Okay'}
-						onClickHandler={closeWindowHandler}
-					/>
-				</div>
-			</div>
-		</div>
+		<>
+			{ReactDOM.createPortal(
+				<Backdrop
+					status={status}
+					closeWindowHandler={closeWindowHandler}
+				/>,
+				document.getElementById('backdrop-root')
+			)}
+			{ReactDOM.createPortal(
+				<ModalOverlay
+					status={status}
+					closeWindowHandler={closeWindowHandler}
+					errorContent={errorContent}
+				/>,
+				document.getElementById('overlay-root')
+			)}
+		</>
 	);
 }
 

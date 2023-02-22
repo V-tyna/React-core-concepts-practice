@@ -19,7 +19,7 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <header>
         <h1>Hello world</h1> 
       </header>
@@ -29,7 +29,7 @@ function App() {
         <NewExpense onAddExpense={addExpenseHandler} />
         <Expenses expenses={expenses} />
       </div>
-    </div>
+    </>
   );
 }
 

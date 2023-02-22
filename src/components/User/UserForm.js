@@ -1,35 +1,29 @@
-import { useState } from 'react';
+import { useRef } from 'react';
 import Button from './UI/Button';
 
 import styles from './UserForm.module.css';
 
 function UserForm({ onSetUserData, onError }) {
-  const [name, setName] = useState('');
-  const [age, setAge] = useState('');
+  const nameInputRef = useRef();
+  const ageInputRef = useRef();
   
-  const ageInputHandler = (e) => {
-    setAge(+e.target.value);
-  };
-
-  const nameInputHandler = (e) => {
-    setName(e.target.value.trim());
-  };
-
   const userFormHandler = (e) => {
     e.preventDefault();
-    if (age < 1 || age > 120) {
+    const enteredName = nameInputRef.current.value;
+    const enteredAge = ageInputRef.current.value;
+    if (enteredAge < 1 || enteredAge > 120) {
       onError('User age should be greater than 1 and less than 120.');
       return;
     }
-    if (name.length < 1) {
+    if (enteredName.length < 1) {
       onError('User name filed can\'t be empty.');
       return;
     }
     const userData = {
-      name, age, id: new Date().toLocaleString()
+      name: enteredName, age: +enteredAge, id: new Date().toLocaleString()
     };
-    setAge('');
-    setName('');
+    nameInputRef.current.value = '';
+    ageInputRef.current.value = '';
     onSetUserData(userData);
   };
 
@@ -40,9 +34,9 @@ function UserForm({ onSetUserData, onError }) {
 	return (
 		<form onSubmit={userFormHandler} className={styles['user-form-control']}>
 			<label>Name: </label>
-			<input onChange={nameInputHandler} value={name} />
+			<input ref={nameInputRef} />
 			<label>Age (years): </label>
-			<input type='number' onChange={ageInputHandler} value={age} />
+			<input type='number' ref={ageInputRef} />
       <Button buttonType={'submit'} textContent={'Add user'} onClickHandler={addUser}/>
 		</form>
 	);

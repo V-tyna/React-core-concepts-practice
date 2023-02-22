@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ModalWindow from '../ModalWindow/ModalWindow';
 import UserCard from './UserCard';
 import UserForm from './UserForm';
+import Wrapper from '../Helpers/Wrapper';
 
 function User() {
 	const [error, setError] = useState(null);
@@ -23,15 +24,15 @@ function User() {
 		console.log('Modal window closed.');
 	};
 	return (
-		<div>
-			{error ? (
+		<Wrapper>
+			{error && (
 				<ModalWindow errorContent={error} onClose={closeHandler} />
-			) : null}
+			)}
 			<UserForm onSetUserData={setUserData} onError={errorHandler} />
 			{users.map((user) => (
 				<UserCard key={user.id} user={user} />
 			))}
-		</div>
+		</Wrapper>
 	);
 }
 
