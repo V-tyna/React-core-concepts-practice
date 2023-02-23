@@ -3,8 +3,8 @@ import React, { useState, useEffect, useReducer, useContext, useRef } from 'reac
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
 import Button from '../UI/Button/Button';
-import AuthContext from '../../../store/auth-context';
 import Input from '../UI/Input/Input';
+import AuthContext from '../../store/auth-context';
 
 const emailReducer = (prevState, action) => {
   if (action.type === 'USER_INPUT') {
