@@ -70,7 +70,6 @@ const Login = () => {
 			setFormIsValid(
 				emailIsValid && passwordIsValid
 			);
-			console.log('Set form validation, use effect runs.');
 		}, 500);
 		return () => {
 			console.log('Clean up!');

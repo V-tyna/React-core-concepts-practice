@@ -14,7 +14,6 @@ export function AuthContextProvider({children}) {
 		if (storedUserLoggedIn === 'true') {
 			setIsLoggedIn(true);
 		}
-		console.log('Use effect runs');
 	}, []);
 
 	const loginHandler = (email, password) => {
