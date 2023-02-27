@@ -24,3 +24,16 @@
   outline: none;
   border-color: #698269;
 }
+
+.invalid input {
+  background-color: rgba(250, 128, 114, 0.479);
+  border: 1px solid salmon !important;
+}
+
+button:disabled,
+button:disabled:hover,
+button:disabled:active {
+  background-color: #ccc;
+  border-color: #ccc;
+  cursor: not-allowed;
+}
