@@ -1,12 +1,16 @@
 // import Basic from './components/BasicStudies/Basic';
 // import Demo from './components/BasicStudies/DemoMemoizing/DemoMemoizing';
-import Restaurant from './components/Restaurant/Restaurant';
+// import Restaurant from './components/Restaurant/Restaurant';
+import CustomHooksCounter from './components/CustomHooksCounter/CustomHooksCounter';
+import MoviesPage from './components/Movies/MoviesPage';
 
 function App() {
 	return (
 		<>
 			{/* <Demo /> */}
-			<Restaurant />
+			<CustomHooksCounter />
+			<MoviesPage />
+			{/* <Restaurant /> */}
 			{/* <Basic /> */}
 		</>
 	);
