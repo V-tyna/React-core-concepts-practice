@@ -1,71 +1,50 @@
 import { useCallback, useEffect, useState } from 'react';
+import useHttp from '../../hooks/useHttp';
 import AddMovie from './AddMovie';
 import MoviesList from './MoviesList';
 import './MoviesPage.css';
 
 function App() {
 	const [movies, setMovies] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
-  const [fetchingError, setFetchingError] = useState(null);
 
-  const addMovieHandler = async (movie) => {
-    console.log('Added movie: ', movie)
-    try {
-      const response = await fetch('https://react-http-5b516-default-rtdb.firebaseio.com/movies.json', {
-        method: 'POST',
-        body: JSON.stringify(movie),
-        headers: {
-          'Content-type': 'application/json'
-        }
-      });
-    
-      if (!response.ok) {
-        throw new Error('Adding movie failure.');
-      }
-      const data = await response.json();
-      console.log('POST RESPONSE: ', data)
-    } catch(e) {
-      setFetchingError(e.message);
-    }
-  };
+	const setMoviesHandler = useCallback((movies) => {
+		const films = Object.entries(movies).map(([id, value]) => ({
+			id,
+			...value,
+		}));
+		setMovies(films);
+	}, []);
+	const { fetchData, loading, error } = useHttp(
+		'https://react-http-5b516-default-rtdb.firebaseio.com/movies.json');
 
-	const fetchMoviesHandler = useCallback(async () => {
-      try {
-        setIsLoading(true);
-        const response = await fetch('https://react-http-5b516-default-rtdb.firebaseio.com/movies.json');
-        console.log('STATUS OK', response.ok);
-        if (!response.ok) {
-          throw new Error('Fetching movies failure.');
-        }
-  
-        const data = await response.json();
-        const transformedMovies = Object.entries(data).map(([id, value]) => ({ id, ...value}));
-        console.log('Movies', transformedMovies);
-       setMovies(transformedMovies);
-      } catch(e) {
-        setFetchingError(e.message);
-      }
-      setIsLoading(false);	
-  }, []); 
-  
-  useEffect(() => {
-    console.log('UseEffect runs');
-    fetchMoviesHandler();
-  }, [fetchMoviesHandler]);
+	useEffect(() => {
+		console.log('MoviePage UseEffect runs');
+		fetchData({method: 'GET'}, setMoviesHandler);
+	}, [fetchData, setMoviesHandler]);
+
+  const onAddMovie = (movie) => {
+    setMovies((prev) => [...prev, movie]);
+  }
 
 	return (
 		<>
-    <section>
-      <AddMovie onAddMovie={addMovieHandler} />
-    </section>
-    
 			<section>
-				<button onClick={fetchMoviesHandler}>Fetch Movies</button>
+				<AddMovie addMovie={onAddMovie}/>
+			</section>
+
+			<section>
+				<button>Fetch Movies</button>
 			</section>
 			<section>
-				{!isLoading && !movies.length && !fetchingError && <p>No movies</p>}
-				{isLoading ? <p>Loading...</p> : <MoviesList movies={movies} />}
-        {fetchingError}
+				{error}
+				{!loading && !movies.length && !error && (
+					<p>No movies</p>
+				)}
+				{loading ? (
+					<p>Loading...</p>
+				) : (
+					<MoviesList movies={movies} />
+				)}
 			</section>
 		</>
 	);
