@@ -5,21 +5,72 @@ import Meals from './Meals/Meals';
 import CartContextProvider from './store/CartProvider';
 
 function Restaurant() {
-  const [isShow, setIsShow] = useState(false);
+	const [isShow, setIsShow] = useState(false);
+	const [title, setTitle] = useState('');
+	const [description, setDescription] = useState('');
+	const [price, setPrice] = useState('');
 
-  const showCartHandler = () => {
-    setIsShow(true);
-  };
+	const showCartHandler = () => {
+		setIsShow(true);
+	};
 
-  const hideCartHandler = () => {
-    setIsShow(false);
-  };
+	const hideCartHandler = () => {
+		setIsShow(false);
+	};
 
+	const titleHandler = (e) => {
+		setTitle(e.target.value);
+	};
+	const descriptionHandler = (e) => {
+		setDescription(e.target.value);
+	};
+	const priceHandler = (e) => {
+		setPrice(e.target.value);
+	};
+
+	const submitHandler = async (e) => {
+		e.preventDefault();
+		const product = {
+			name: title,
+			description,
+			price,
+		};
+		try {
+			const response = await fetch(
+				'https://react-http-5b516-default-rtdb.firebaseio.com/meals.json',
+				{
+					method: 'POST',
+					headers: {
+						'Content-type': 'application.json',
+					},
+					body: JSON.stringify(product),
+				}
+			);
+			if (!response.ok) {
+				throw new Error('Adding product meal failure.');
+			}
+      console.log('Success', await response.json())
+      setTitle('');
+      setDescription('');
+      setPrice('');
+		} catch (e) {
+			console.log(e);
+		}
+	};
 	return (
 		<CartContextProvider>
-			{isShow && <Cart onHideCart={hideCartHandler}/>}
+			{isShow && <Cart onHideCart={hideCartHandler} />}
 			<Header onShowCart={showCartHandler} />
 			<Meals />
+			<form onSubmit={submitHandler}>
+				<label htmlFor='name'>Name:</label>
+				<input id='name' onChange={titleHandler} value={title}/>
+				<label htmlFor='description'>Description:</label>
+				<input id='description' onChange={descriptionHandler} value={description}/>
+				<label htmlFor='price'>Price:</label>
+				<input type='number' id='price' onChange={priceHandler} value={price}/>
+        <button type='submit'>Submit</button>
+			</form>
 		</CartContextProvider>
 	);
 }

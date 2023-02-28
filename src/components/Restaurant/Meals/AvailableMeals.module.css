@@ -11,6 +11,38 @@
   padding: 0;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  margin: 20px;
+  width: 100%;
+  background-color: #594545;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 3px 3px 8px #5945458c;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  margin: 20px;
+  width: fit-content;
+  padding: 0 3rem;
+  margin: 2rem auto;
+  background-color: salmon;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 600;
+  border-radius: 12px;
+  box-shadow: 3px 3px 8px #5945458c;
+}
+
 @keyframes meals-appear {
   from {
     opacity: 0;
