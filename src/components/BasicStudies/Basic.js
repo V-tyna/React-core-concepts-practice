@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
 import AuthContext from './store/auth-context';
 
+// import MainHeader from './LoginApp/MainHeader/MainHeader';
 import AppStyle from './StyleBlock/AppStyle';
+import BasicForm from './BasicForm';
 import Expenses from './Expenses/Expenses';
 import Home from './LoginApp/Home/Home';
 import Login from './LoginApp/Login/Login';
-// import MainHeader from './LoginApp/MainHeader/MainHeader';
 import NewExpense from './NewExpense/NewExpense';
 import User from './User/User';
 
@@ -46,6 +47,7 @@ function Basic() {
 	return (
 		<>
 			{/* <MainHeader /> */}
+			<BasicForm />
 			<main>
 				{!ctx.isLoggedIn && <Login />}
 				{ctx.isLoggedIn && <Home />}
