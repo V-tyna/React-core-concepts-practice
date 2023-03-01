@@ -50,6 +50,9 @@ function reducerCtx(prevCtx, action) {
 			totalAmount: updatedTotal,
 		};
 	}
+	if (action.type === 'CLEAR_CART') {
+		return initCartContext;
+	}
 
 	return initCartContext;
 }
@@ -62,6 +65,7 @@ function CartContextProvider({ children }) {
 		totalAmount: cartState.totalAmount,
 		addItem: addItemToCartHandler,
 		removeItem: removeItemFromCartHandler,
+		clearCart: clearCartHandler
 	};
 
 	function addItemToCartHandler(item) {
@@ -70,6 +74,10 @@ function CartContextProvider({ children }) {
 
 	function removeItemFromCartHandler(id) {
 		dispatchCtx({ type: 'REMOVE_ITEM', payload: id });
+	}
+
+	function clearCartHandler() {
+		dispatchCtx({ type: 'CLEAR_CART' });
 	}
 
 	return (

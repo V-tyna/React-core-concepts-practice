@@ -7,6 +7,7 @@ import Checkout from './Checkout';
 
 function Cart({ onHideCart }) {
 	const [isOpen, setIsOpen] = useState(false);
+	const [isSubmit, setIsSubmit] = useState(false);
 	const cartContext = useContext(CartContext);
 	const amountSum = cartContext.totalAmount.toFixed(2);
 	const hasItems = cartContext.items.length > 0;
@@ -36,31 +37,68 @@ function Cart({ onHideCart }) {
 		setIsOpen(true);
 	};
 
-	return (
-		<Modal onHideCart={onHideCart}>
+	const closeCart = () => {
+		setIsSubmit(false);
+		setIsOpen(false);
+		onHideCart();
+	};
+
+	const submitOrderHandler = (boolean) => {
+		setIsSubmit(boolean);
+	};
+
+	const cartModalContent = (
+		<>
 			{cartItems}
 			<div className={classes.total}>
 				<span> Total amount</span>
 				<span>${amountSum}</span>
 			</div>
 			{isOpen ? (
-				<Checkout onHideCart={onHideCart} products={cartContext.items} />
+				<Checkout
+					onSubmitOrder={submitOrderHandler}
+					onClose={closeCart}
+					products={cartContext.items}
+					totalAmount={amountSum}
+					onClearCart={cartContext.clearCart}
+				/>
 			) : (
 				<div className={classes.actions}>
 					<button
 						className={classes['button--alt']}
 						onClick={onHideCart}
 					>
-						Close
+						{' '}
+						Close{' '}
 					</button>
 					{hasItems && (
 						<button
 							className={classes['button']}
 							onClick={openCheckoutHandler}
 						>
-							Order
+							{' '}
+							Order{' '}
 						</button>
 					)}
+				</div>
+			)}
+		</>
+	);
+
+	return (
+		<Modal onHideCart={closeCart}>
+			{!isSubmit ? (
+				cartModalContent
+			) : (
+				<div className={classes.actions}>
+					<p>Order successfully made!</p>
+					<button
+						className={classes['button--alt']}
+						onClick={onHideCart}
+					>
+						{' '}
+						Close{' '}
+					</button>
 				</div>
 			)}
 		</Modal>

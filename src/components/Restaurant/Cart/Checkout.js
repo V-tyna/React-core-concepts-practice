@@ -5,7 +5,7 @@ import classes from './Checkout.module.css';
 const notEmpty = (value) => value !== '';
 const sixCharacters = (value) => value.length > 4;
 
-function Checkout({ onHideCart, products }) {
+function Checkout({ onClose, products, onClearCart, totalAmount, onSubmitOrder }) {
 	const [isFormValid, setIsFormValid] = useState(false);
 	const {
 		inputState: firstNameState,
@@ -86,9 +86,37 @@ function Checkout({ onHideCart, products }) {
 		countryIsValid,
 	]);
 
+	const fetchOrder = async (order) => {
+		try {
+			const response = await fetch('https://react-http-5b516-default-rtdb.firebaseio.com/orders.json', {
+				method: 'POST',
+				headers: {
+					'Content-type': 'application/json'
+				},
+				body: JSON.stringify(order)
+			});
+			if (!response.ok) {
+				throw new Error('Making order error.');
+			}
+			console.log('Successful order.', await response.json());
+		} catch(e) {
+			console.log(e.message);
+		}
+	}
+
+	const clearInputs = () => {
+		firstNameReset();
+		lastNameReset();
+		streetReset();
+		postalReset();
+		cityReset();
+		countryReset();
+	}
+
 	const saveOrderHandler = async (e) => {
 		e.preventDefault();
 		if (isFormValid) {
+			onSubmitOrder(true);
 			const order = {
 				name: {
 					firstName: firstNameState.enteredValue,
@@ -100,30 +128,12 @@ function Checkout({ onHideCart, products }) {
 					city: cityState.enteredValue,
 					country: countryState.enteredValue,
 				},
-        products
+        products,
+				totalAmount
 			};
-			
-      try {
-        const response = await fetch('https://react-http-5b516-default-rtdb.firebaseio.com/orders.json', {
-          method: 'POST',
-          headers: {
-            'Content-type': 'application/json'
-          },
-          body: JSON.stringify(order)
-        });
-        if (!response.ok) {
-          throw new Error('Making order error.');
-        }
-        console.log('Successful order.', await response.json());
-      } catch(e) {
-        console.log(e.message);
-      }
-			firstNameReset();
-			lastNameReset();
-			streetReset();
-			postalReset();
-			cityReset();
-			countryReset();
+			await fetchOrder(order);
+			clearInputs();
+			onClearCart();
 		}
 	};
 
@@ -230,8 +240,8 @@ function Checkout({ onHideCart, products }) {
 			</div>
 			<hr />
 			<div className={classes.actions}>
-				<button onClick={onHideCart}>Close</button>
-				<button className={classes.submit} disabled={!isFormValid}>
+				<button type='button' onClick={onClose}>Close</button>
+				<button type='submit' className={classes.submit} disabled={!isFormValid}>
 					Make an order
 				</button>
 			</div>
