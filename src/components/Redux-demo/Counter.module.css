@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #594545;
+  background-color: #594545;
+}
+
+.counter {
+  margin: 5rem auto;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.2);
+  width: 40rem;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  background-color: #f4f0fa;
+}
+
+.counter h1 {
+  text-transform: uppercase;
+  color: #698269;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.value {
+  font-size: 2rem;
+  color: #594545;
+  margin: 2rem 0;
+  font-weight: bold;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #698269;
+  border: 1px solid #698269;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  margin: 10px 10px 0 0;
+}
+
+button:hover,
+button:active {
+  background-color: #B99B6B;
+  border-color: #B99B6B;
+}
