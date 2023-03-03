@@ -1,4 +1,5 @@
 .form {
+  width: 450px;
   max-width: 40rem;
   margin: 2rem auto;
 }
@@ -13,7 +14,17 @@
 .form input,
 .form textarea {
   font: inherit;
-  padding: 0.25rem;
+  padding: 0.3rem;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background-color: #e7b00a2c;
+}
+
+
+.form input:focus,
+.form textarea:focus {
+  background-color: #e7b00a83;
 }
 
 .actions {
@@ -27,20 +38,21 @@
   cursor: pointer;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
-  background-color: var(--color-gray-300);
-  color: var(--color-gray-800);
+  background-color: #898121;
+  color: white;
   border: none;
 }
 
 .actions button[type='button'] {
   background-color: transparent;
-  color: var(--color-gray-300);
+  color: #898121;
 }
 
 .actions button:hover {
-  background-color: var(--color-primary-300);
+  background-color: #E7B10A;
 }
 
 .actions button[type='button']:hover {
-  background-color: var(--color-gray-800);
+  background-color: #E7B10A;
+  color: white
 }

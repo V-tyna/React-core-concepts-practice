@@ -1,7 +1,9 @@
+import EventForm from '../Components/EventForm';
+
 function NewEvent() {
 	return (
 		<>
-			<h1>New Event</h1>
+			<EventForm method={'post'} event={{}}/>
 		</>
 	);
 }
