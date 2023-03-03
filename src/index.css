@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #4C4B16;
 }
 
 code {
@@ -19,4 +20,19 @@ code {
   flex-direction: column;
   align-items: center;
   border-radius: 12px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.error-message h1 {
+  color: salmon;
+}
+
+.error-message p {
+  font-weight: 600;
+  color: rgb(41, 0, 0);
 }
