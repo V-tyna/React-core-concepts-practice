@@ -30,9 +30,19 @@
   border: 1px solid salmon !important;
 }
 
-button:disabled,
-button:disabled:hover,
-button:disabled:active {
+.btn-movies {
+  font: inherit;
+  cursor: pointer;
+  background: #594545;
+  border: 1px solid #594545;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+}
+
+.btn-movies:disabled,
+.btn-movies:disabled:hover,
+.btn-movies:disabled:active {
   background-color: #ccc;
   border-color: #ccc;
   cursor: not-allowed;

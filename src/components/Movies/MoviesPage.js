@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import useHttp from '../../hooks/useHttp';
 import AddMovie from './AddMovie';
 import MoviesList from './MoviesList';
-import './MoviesPage.css';
+import classes from './MoviesPage.module.css';
 
 function App() {
 	const [movies, setMovies] = useState([]);
@@ -33,7 +33,7 @@ function App() {
 			</section>
 
 			<section>
-				<button>Fetch Movies</button>
+				<button className={classes['btn-movies']}>Fetch Movies</button>
 			</section>
 			<section>
 				{error}

@@ -2,11 +2,12 @@
   box-sizing: border-box;
 }
 
-body {
+.body-redux {
   margin: 0;
   font-family: sans-serif;
   color: #594545;
-  background-color: #594545;
+  background-color: #5945457e;
+  height: 100vh;
 }
 
 .counter {
@@ -33,7 +34,7 @@ body {
   font-weight: bold;
 }
 
-button {
+.body-redux button {
   font: inherit;
   cursor: pointer;
   background-color: #698269;
@@ -44,8 +45,8 @@ button {
   margin: 10px 10px 0 0;
 }
 
-button:hover,
-button:active {
+.body-redux button:hover,
+.body-redux button:active {
   background-color: #B99B6B;
   border-color: #B99B6B;
 }

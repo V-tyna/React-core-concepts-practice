@@ -8,12 +8,13 @@ html {
   font-family: 'Noto Sans JP', sans-serif;
 }
 
-body {
+.body {
   margin: 0;
   background-color: #3f3f3f;
+  height: 100vh;
 }
 
-button {
+.body button {
   font: inherit;
   cursor: pointer;
   padding: 0.5rem 1.5rem;
@@ -23,8 +24,8 @@ button {
   border: 1px solid #1a8ed1;
 }
 
-button:hover,
-button:active {
+.body button:hover,
+.body button:active {
   background-color: #1ac5d1;
   border-color: #1ac5d1;
   color: white;

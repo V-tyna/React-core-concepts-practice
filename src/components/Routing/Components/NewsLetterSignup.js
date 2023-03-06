@@ -20,7 +20,7 @@ function NewsletterSignup() {
 				placeholder='Sign up for newsletter...'
 				aria-label='Sign up for newsletter'
 			/>
-			<button>Sign up</button>
+			<button className={classes.btn}>Sign up</button>
 		</fetcher.Form>
 	);
 }

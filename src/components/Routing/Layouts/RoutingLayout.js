@@ -1,4 +1,9 @@
-import { Outlet, useRouteLoaderData, useNavigation, useSubmit } from 'react-router-dom';
+import {
+	Outlet,
+	useRouteLoaderData,
+	useNavigation,
+	useSubmit,
+} from 'react-router-dom';
 import { Bars } from 'react-loader-spinner';
 import MainNavigation from '../Components/MainNavigation';
 import { useEffect } from 'react';
@@ -14,36 +19,35 @@ function RoutingLayout() {
 			return;
 		}
 
-		if (token === 'EXPIRED') {
-			submit(null, {action: '/logout', method: 'post'});
-		}
-
 		const tokenDuration = getTokenDuration();
-		setTimeout(() => {
-			submit(null, {action: '/logout', method: 'post'});
-		}, tokenDuration);
+		if (tokenDuration < 0) {
+			submit(null, { action: '/logout', method: 'post' });
+		}
 	}, [token, submit]);
 	return (
-		<div className='body-container'>
-			<MainNavigation />
-			<main>
-				{navigation.state === 'loading' && (
-					<Bars
-						height='80'
-						width='80'
-						color='#898121'
-						ariaLabel='bars-loading'
-						wrapperStyle={{
-							display: 'flex',
-							justifyContent: 'center',
-						}}
-						wrapperClass=''
-						visible={true}
-					/>
-				)}
-				<Outlet />
-			</main>
-		</div>
+			<div className='body-container'>
+				<MainNavigation />
+				<main>
+					{navigation.state === 'loading' && (
+						<Bars
+							height='80'
+							width='80'
+							color='#898121'
+							ariaLabel='bars-loading'
+							wrapperStyle={{
+								display: 'flex',
+								justifyContent: 'center',
+							}}
+							wrapperClass=''
+							visible={true}
+						/>
+					)}
+					<Outlet />
+				</main>
+				{/* <Link to='/' className={classes['home-page-link']}>
+					Back to home page
+				</Link> */}
+			</div>
 	);
 }
 

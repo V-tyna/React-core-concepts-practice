@@ -6,7 +6,7 @@ import Cart from './Cart/Cart';
 import Layout from './Layout/Layout';
 import Products from './Shop/Products';
 
-import './ShopPage.module.css';
+import classes from './ShopPage.module.css';
 import Notification from './UI/Notification';
 
 let isInitial = true;
@@ -38,13 +38,13 @@ function ShopPage() {
 	}, [dispatch, cart, changed]);
 
 	return (
-		<>
+		<div className={classes.body}>
 		{notification && <Notification notification={notification} />}
 			<Layout>
 				{cartIsVisible && <Cart />}
 				<Products />
 			</Layout>
-		</>
+		</div>
 	);
 }
 

@@ -8,7 +8,7 @@ section {
   border-radius: 12px;
 }
 
-button {
+.btn-movies {
   font: inherit;
   cursor: pointer;
   background: #594545;
@@ -18,12 +18,12 @@ button {
   border-radius: 12px;
 }
 
-button:focus {
+.btn-movies:focus {
   outline: none;
 }
 
-button:hover,
-button:active {
+.btn-movies:hover,
+.btn-movies:active {
   background-color: #815B5B;
   border-color: #815B5B;
 }

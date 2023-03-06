@@ -8,6 +8,10 @@
   background-color: #f4f0fa;
 }
 
+.auth section{
+  width: 100%;
+}
+
 .control {
   margin-bottom: 0.5rem;
 }

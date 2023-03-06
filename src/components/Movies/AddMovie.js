@@ -81,7 +81,7 @@ function AddMovie({ addMovie }) {
 				<label htmlFor='date'>Release Date</label>
 				<input type='text' id='date' ref={releaseDateRef} />
 			</div>
-			<button disabled={!formIsValid}>Add Movie</button>
+			<button disabled={!formIsValid} className={classes['btn-movies']}>Add Movie</button>
 			{loading && <p>Loading...</p>}
 			{error}
 		</form>

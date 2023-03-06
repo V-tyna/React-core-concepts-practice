@@ -84,7 +84,7 @@ const BasicForm = () => {
 			</div>
 			<div className={emailClasses}>
 				<label htmlFor='email'>E-Mail Address</label>
-				<input type='email' id='email' value={emailState.enteredValue}
+				<input type='email' id='email-e' value={emailState.enteredValue}
 						onChange={emailChangeHandler}
 						onBlur={emailBlurHandler}/>
         <div className={classes['error-container']}>

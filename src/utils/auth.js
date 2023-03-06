@@ -8,7 +8,9 @@ const getAuthToken = () => {
   const token = localStorage.getItem('token');
   const expiresIn = getTokenDuration();
   if (expiresIn < 0) {
-    return 'EXPIRED';
+    localStorage.removeItem('token');
+    localStorage.removeItem('expiresIn');
+    return null;
   }
   return token;
 }
