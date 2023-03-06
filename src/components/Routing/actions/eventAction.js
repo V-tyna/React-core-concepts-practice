@@ -1,7 +1,9 @@
 import { json, redirect } from 'react-router-dom';
+import getAuthToken from '../../../utils/auth';
 
 const eventAction = async ({ request, params }) => {
 	const method = request.method;
+	const token = getAuthToken();
 	const data = await request.formData(); // grab all data from <Form></Form>
 	const eventData = {
 		title: data.get('title'),
@@ -18,6 +20,7 @@ const eventAction = async ({ request, params }) => {
 		body: JSON.stringify(eventData),
 		headers: {
 			'Content-Type': 'application/json',
+			'Authorization': 'Bearer ' + token,
 		},
 	});
   if (response.status === 422) {
