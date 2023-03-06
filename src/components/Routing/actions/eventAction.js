@@ -12,7 +12,6 @@ const eventAction = async ({ request, params }) => {
 	let url = 'http://localhost:4200/events';
 	if (method === 'PATCH') {
 		url += '/' + params.eventId;
-		console.log('URL: ', url)
 	}
 	const response = await fetch(url, {
 		method,

@@ -11,8 +11,8 @@ const eventRouter = express.Router();
 
 eventRouter.get('/', async (req, res, next) => {
 	try {
-    const events = await getAll();
-    res.json({ events: events });
+		const events = await getAll();
+		res.json({ events: events });
 	} catch (error) {
 		next(error);
 	}

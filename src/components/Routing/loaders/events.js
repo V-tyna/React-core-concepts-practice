@@ -1,4 +1,4 @@
-import { json } from 'react-router-dom';
+import { defer, json } from 'react-router-dom';
 
 const fetchEventsDataLoader = async () => {
 		const response = await fetch('http://localhost:4200/events');
@@ -13,4 +13,10 @@ const fetchEventsDataLoader = async () => {
 		}
 };
 
-export default fetchEventsDataLoader;
+const deferFetchEventsLoader = () => {
+	return defer({
+		events: fetchEventsDataLoader()
+	});
+};
+
+export default deferFetchEventsLoader;

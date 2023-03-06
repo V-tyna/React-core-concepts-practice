@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import deleteEventAction from './actions/deleteEvent';
 import eventAction from './actions/eventAction';
+import newsLetterAction from './actions/newLetter';
+import NewsletterPage from './Components/NewsLetter';
 import EventsLayout from './Layouts/EventsLayout';
 import RoutingLayout from './Layouts/RoutingLayout';
 import fetchEventDetailLoader from './loaders/eventDetail';
-import fetchEventsDataLoader from './loaders/events';
+import deferFetchEventsLoader from './loaders/events';
 import EditEvent from './Pages/EditEvent';
 import ErrorPage from './Pages/Error';
 import EventDetail from './Pages/EventDetail';
@@ -18,8 +20,14 @@ function RoutingPage() {
 			path: '/',
 			element: <RoutingLayout />,
 			errorElement: <ErrorPage />,
+			action: newsLetterAction,
 			children: [
 				{ index: true, element: <Home /> },
+				{
+					path: 'newsletter',
+					element: <NewsletterPage />,
+					action: newsLetterAction,
+				},
 				{
 					path: 'events',
 					element: <EventsLayout />,
@@ -27,7 +35,7 @@ function RoutingPage() {
 						{
 							index: true,
 							element: <Events />,
-							loader: fetchEventsDataLoader,
+							loader: deferFetchEventsLoader,
 						},
 						{ path: 'new', element: <NewEvent />, action: eventAction },
 						{
