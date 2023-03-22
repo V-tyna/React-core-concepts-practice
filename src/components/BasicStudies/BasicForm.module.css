@@ -80,6 +80,7 @@
 
 .btn:hover {
   background-color: #698269;
+	cursor: pointer;
 }
 
 .btn:disabled,

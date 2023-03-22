@@ -23,6 +23,7 @@ import ShopPage from '../ShopPage/ShopPage';
 import Basic from '../BasicStudies/Basic';
 import ReduxPage from '../Redux-demo/ReduxPage';
 import Demo from '../BasicStudies/DemoMemoizing/DemoMemoizing'
+import AnimationLayout from '../Animation/AnimationLayout.js';
 
 const NewsletterPage = lazy(() => import('./Components/NewsLetter'));
 
@@ -93,6 +94,10 @@ function RoutingPage() {
 				{
 					path: '/demo-memo',
 					element: <Demo />
+				},
+				{
+					path: '/animation',
+					element: <AnimationLayout />
 				},
 			]
 		},

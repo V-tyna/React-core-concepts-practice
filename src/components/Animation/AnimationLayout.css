@@ -1,14 +1,10 @@
-.button-area {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+.app {
+  text-align: center;
 }
 
 .btn {
-  width: 100px;
-  height: 35px;
+  width: 120px;
+  height: 40px;
   font-size: 1rem;
   background-color: #815B5B;
   color: white;

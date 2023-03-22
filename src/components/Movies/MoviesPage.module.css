@@ -26,4 +26,5 @@ section {
 .btn-movies:active {
   background-color: #815B5B;
   border-color: #815B5B;
+  cursor: pointer;
 }
