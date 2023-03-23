@@ -16,7 +16,7 @@ function Home() {
 			<Link to='/movies' className={classes.link}><Card>Movies page</Card></Link>
 			<Link to='/animation' className={classes.link}><Card>Animation page</Card></Link>
 			<Link to='/basic' className={classes.link}><Card>Basic page</Card></Link>
-			<Link to='/use-context' className={classes.link}><Card>Use Context page</Card></Link>
+			<Link to='/simplified-redux' className={classes.link}><Card>Custom Redux page</Card></Link>
 			<Link to='/redux-demo' className={classes.link}><Card>Redux demo page</Card></Link>
 			<Link to='/demo-memo' className={classes.link}><Card>Demo memo page</Card></Link>
 		</div>

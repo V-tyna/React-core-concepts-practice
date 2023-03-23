@@ -1,13 +1,15 @@
 import { Outlet } from 'react-router-dom';
 import Navigation from './components/Nav/Navigation';
-import ProductsContextProvider from './context/products-context';
+import configureProductsStore from './hook-store/products-store';
+
+configureProductsStore();
 
 const UseContextLayout = props => {
   return (
-    <ProductsContextProvider>
+    <>
       <Navigation />
       <Outlet />
-    </ProductsContextProvider>
+    </>
   );
 };
 

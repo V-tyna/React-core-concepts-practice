@@ -24,9 +24,9 @@ import Restaurant from '../Restaurant/Restaurant';
 import RoutingLayout from './Layouts/RoutingLayout';
 import ShopPage from '../ShopPage/ShopPage';
 import tokenLoader, { checkAuthLoader } from './loaders/auth';
-import UseContextLayout from '../UseContextDemo/UseContextLayout';
-import Products from '../UseContextDemo/containers/Products';
-import Favorites from '../UseContextDemo/containers/Favorites';
+import UseContextLayout from '../SimplifiedReduxDemo/SimplifiedReduxLayout';
+import Products from '../SimplifiedReduxDemo/containers/Products';
+import Favorites from '../SimplifiedReduxDemo/containers/Favorites';
 
 const NewsletterPage = lazy(() => import('./Components/NewsLetter'));
 
@@ -103,7 +103,7 @@ function RoutingPage() {
 					element: <AnimationLayout />
 				},
 				{
-					path: '/use-context',
+					path: '/simplified-redux',
 					element: <UseContextLayout />,
 					children: [
 						{ index: true, element: <Products /> },
