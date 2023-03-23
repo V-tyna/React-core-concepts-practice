@@ -11,7 +11,7 @@ const store = configureStore({
 		counterReducer: counterSlice,
 		authReducer: authSlice,
 		shop: shopSlice,
-    ui: uiSlice
+    ui: uiSlice,
 	},
 });
 

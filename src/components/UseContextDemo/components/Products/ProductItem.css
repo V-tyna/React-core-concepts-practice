@@ -1,0 +1,26 @@
+.product-item h2 {
+  font-size: 1.15rem;
+  margin: 0.25rem 0;
+}
+
+.product-item h2.is-fav {
+  color: #E7B10A;
+}
+
+.product-item p {
+  margin: 0.25rem 0;
+}
+
+button {
+  color: white;
+  border: 1px solid #E7B10A;
+  background-color: #E7B10A;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+
+.button-outline {
+  color: #E7B10A;
+  background-color: transparent;
+  border-radius: 5px;
+}

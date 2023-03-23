@@ -1,9 +1,13 @@
-import { lazy, Suspense } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import AnimationLayout from '../Animation/AnimationLayout.js';
+import AppLayout from './Layouts/AppLayout';
 import authAction from './actions/authAction';
 import AuthenticationPage from './Pages/Authentication';
+import Basic from '../BasicStudies/Basic';
 import deferFetchEventsLoader from './loaders/events';
 import deleteEventAction from './actions/deleteEvent';
+import Demo from '../BasicStudies/DemoMemoizing/DemoMemoizing';
 import EditEvent from './Pages/EditEvent';
 import ErrorPage from './Pages/Error';
 import eventAction from './actions/eventAction';
@@ -12,18 +16,17 @@ import Events from './Pages/Events';
 import EventsLayout from './Layouts/EventsLayout';
 import Home from './Pages/Home';
 import logoutAction from './actions/logout';
-import MoviesPage from '../Movies/MoviesPage'
+import MoviesPage from '../Movies/MoviesPage';
 import NewEvent from './Pages/NewEvent';
 import newsLetterAction from './actions/newLetter';
+import ReduxPage from '../Redux-demo/ReduxPage';
 import Restaurant from '../Restaurant/Restaurant';
 import RoutingLayout from './Layouts/RoutingLayout';
-import tokenLoader, { checkAuthLoader } from './loaders/auth';
-import AppLayout from './Layouts/AppLayout';
 import ShopPage from '../ShopPage/ShopPage';
-import Basic from '../BasicStudies/Basic';
-import ReduxPage from '../Redux-demo/ReduxPage';
-import Demo from '../BasicStudies/DemoMemoizing/DemoMemoizing'
-import AnimationLayout from '../Animation/AnimationLayout.js';
+import tokenLoader, { checkAuthLoader } from './loaders/auth';
+import UseContextLayout from '../UseContextDemo/UseContextLayout';
+import Products from '../UseContextDemo/containers/Products';
+import Favorites from '../UseContextDemo/containers/Favorites';
 
 const NewsletterPage = lazy(() => import('./Components/NewsLetter'));
 
@@ -98,6 +101,14 @@ function RoutingPage() {
 				{
 					path: '/animation',
 					element: <AnimationLayout />
+				},
+				{
+					path: '/use-context',
+					element: <UseContextLayout />,
+					children: [
+						{ index: true, element: <Products /> },
+						{ path: 'favorites', element: <Favorites /> },
+					]
 				},
 			]
 		},
