@@ -72,7 +72,7 @@ const Login = () => {
 			);
 		}, 500);
 		return () => {
-			console.log('Clean up!');
+			// console.log('Clean up!');
 			clearTimeout(timerId);
 		};
 	}, [emailIsValid, passwordIsValid]);

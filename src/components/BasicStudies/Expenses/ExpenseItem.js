@@ -9,7 +9,7 @@ function ExpenseItem({ expense: {date, title, price} }) {
   const [changeableTitle, setChangeableTitle] = useState(title);
   const handleChangeTitle = (e) => {
     setChangeableTitle('Updated!');
-    console.log('Clicked!', e);
+    // console.log('Clicked!', e);
   };
 
   return (
