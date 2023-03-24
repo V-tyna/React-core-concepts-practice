@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Cart from './Cart/Cart';
+import CartContextProvider from './store/CartProvider';
 import Header from './Layout/Header';
 import Meals from './Meals/Meals';
-import CartContextProvider from './store/CartProvider';
+
+import classes from './Restaurant.module.css';
 
 function Restaurant() {
 	const [isShow, setIsShow] = useState(false);
@@ -49,7 +51,6 @@ function Restaurant() {
 			if (!response.ok) {
 				throw new Error('Adding product meal failure.');
 			}
-      console.log('Success', await response.json())
       setTitle('');
       setDescription('');
       setPrice('');
@@ -62,7 +63,8 @@ function Restaurant() {
 			{isShow && <Cart onHideCart={hideCartHandler} />}
 			<Header onShowCart={showCartHandler} />
 			<Meals />
-			<form onSubmit={submitHandler}>
+			<h2>Add meal:</h2>
+			<form onSubmit={submitHandler} className={classes['meal-add-form']}>
 				<label htmlFor='name'>Name:</label>
 				<input id='name' onChange={titleHandler} value={title}/>
 				<label htmlFor='description'>Description:</label>

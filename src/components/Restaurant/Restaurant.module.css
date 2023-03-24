@@ -1,0 +1,32 @@
+h2 {
+  text-align: center;
+}
+
+.meal-add-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  max-width: 50rem;
+  margin: 2rem auto;
+}
+
+.meal-add-form input, .meal-add-form label {
+  width: 100%;
+  padding: 0.5rem;
+  margin: 0 0.5rem 0 0.5rem;
+  border-radius: 12px;
+  border: none;
+}
+
+.meal-add-form button {
+  margin-top: 2rem;
+}
+
+@media (max-width: 468px) {
+  .meal-add-form {
+    margin: 2rem;
+  }
+}

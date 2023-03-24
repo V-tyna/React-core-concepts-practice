@@ -3,6 +3,8 @@ import Card from '../Ul/Card';
 import classes from './AvailableMeals.module.css';
 import MealItem from './MealItem/MealItem';
 
+const errorMessage = 'errorMessage';
+
 function AvailableMeals() {
 	const [meals, setMeals] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
@@ -27,7 +29,6 @@ function AvailableMeals() {
 				price: +value.price,
 			}));
 			setMeals(transformedData);
-			console.log('Meals: ', transformedData);
 		} catch (e) {
 			console.log(e);
 			setHasError(e.message);
@@ -56,7 +57,7 @@ function AvailableMeals() {
 			)}
 
 			{hasError && !isLoading && (
-				<div className={classes.error}>{hasError}</div>
+				<div role={errorMessage} className={classes.error}>{hasError}</div>
 			)}
 		</>
 	);

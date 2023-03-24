@@ -44,9 +44,6 @@ function RoutingLayout() {
 					)}
 					<Outlet />
 				</main>
-				{/* <Link to='/' className={classes['home-page-link']}>
-					Back to home page
-				</Link> */}
 			</div>
 	);
 }
